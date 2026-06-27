@@ -1,0 +1,22 @@
+DATA CLEANING SUMMARY
+==================================================
+Forest raw rows: 8546
+Grassland raw rows: 8531
+Combined raw rows: 17077
+Duplicate rows removed: 1705
+Final cleaned rows: 15372
+
+Schema reconciliation:
+- NPSTaxonCode (Forest) and TaxonCode (Grassland) merged into Taxon_Code
+- Site_Name (Forest-only) and Previously_Obs (Grassland-only) preserved as NA where absent
+
+Missing value handling:
+- Sex: missing -> 'Not Recorded' (explicit category, not dropped)
+- Distance: missing -> 'Not Recorded'
+- Sub_Unit_Code: left as NA (field is structurally absent for most/all Grassland records)
+- AcceptedTSN / Taxon_Code: left as NA where missing (used only for lookups)
+
+Temperature values out of plausible range (-20 to 120F): 0
+Humidity values out of plausible range (0-100%): 0
+
+Derived columns added: Month, Month_Name, Season, Observation_Duration_Min, Admin_Unit_Name
